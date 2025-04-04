@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buenas Vibras ✨</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      position: relative;
+    }
+    #mensaje {
+      font-size: 2.5rem;
+      color: #fff;
+      text-shadow: 2px 2px 5px #ff69b4;
+      z-index: 10;
+      max-width: 80%;
+    }
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+      animation: caer 6s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes caer {
+      0% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="mensaje">🌈 ¡Hoy va a ser un gran día! 💖</div>
+  <script>
+    const emojis = ['❤️', '🌺', '✨', '💕', '🌟', '😍', '💖'];
+    const mensajes = [
+      '💖 Tu sonrisa me alegra el día 💖',
+      '🌸 Estás hermosa, como siempre 🌸',
+      '✨ Me encanta hablar con vos ✨',
+      '💫 Sos especial y única 💫',
+      '❤️ Ojalá supieras lo mucho que me gustás ❤️'
+    ];
+
+    function crearEmoji() {
+      const emoji = document.createElement('div');
+      emoji.classList.add('emoji');
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * 100 + 'vw';
+      emoji.style.top = '-5vh';
+      emoji.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+      document.body.appendChild(emoji);
+
+      setTimeout(() => {
+        emoji.remove();
+      }, 6000);
+    }
+
+    function cambiarMensaje() {
+      const mensajeDiv = document.getElementById('mensaje');
+      const nuevoMensaje = mensajes[Math.floor(Math.random() * mensajes.length)];
+      mensajeDiv.textContent = nuevoMensaje;
+    }
+
+    setInterval(crearEmoji, 200);
+    setInterval(cambiarMensaje, 5000);
+  </script>
+</body>
+</html>
