@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💬 Un Mensaje para Vos</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f9d5e5, #fbc2eb);
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .mensaje {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 1rem 1.5rem;
+      border-radius: 1.5rem;
+      max-width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      font-size: 1.1rem;
+      color: #c2185b;
+      animation: aparecer 4s ease-out forwards;
+    }
+
+    @keyframes aparecer {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+      animation: caer 5s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes caer {
+      0% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body onclick="mostrarMensaje()">
+
+  <script>
+    const frases = [
+      '💬 Este mensaje capaz parece un montón, pero bueno...',
+      '💬 La gente hace cosas inexplicables cuando siente cosas más allá de lo que alguna vez pensó.',
+      '💬 Quería decirte que me alegro mucho de haberte conocido.',
+      '💬 Sos una excelente persona, encantadora, hermosa, bella y amable.',
+      '💬 En pocas palabras: sos perfecta ante mis ojos.',
+      '💬 Y tus "imperfecciones"... son justamente lo que más me gusta.',
+      '💬 Siempre lo van a ser.',
+      '💬 Solo quería decirte algunas cosas como estas.',
+      '💬 Sos hermosa e única.',
+      '💬 No hay nadie que te iguale ante mis ojos.',
+      '💬 Siempre que necesites, voy a estar.',
+      '💬 Mandá un mensaje y hacemos lo que quieras.',
+      '💬 Aunque sea lo más simple del mundo, si estás vos, ya es un planazo.',
+      '💬 Para concluir, te explico algo más:',
+      '💬 Siento cosas por vos que ni siquiera sé cómo explicar.',
+      '💬 Lo que sí te puedo asegurar es que si me das la oportunidad...',
+      '💬 No te vas a arrepentir.',
+      '💬 Sí, me da miedo.',
+      '💬 El “ojalá” que no pase o que se quede en eso.',
+      '💬 Pero también tengo esperanza de que podamos intentar algo.',
+      '💬 Si no se da, lo voy a aceptar.',
+      '💬 Pero sin intentarlo, no me puedo ir.',
+      '💬 Así que ojalá todo salga bien.',
+      '💬 Y que los “ojalá” no pasen… se queden.',
+      '💬 Perdón por la intensidad.',
+      '💬 Soy así cuando algo me importa de verdad.',
+      '💬 No está mal ser intensa.',
+      '💬 Todo lo que esté equilibrado, está bien.',
+      '💬 Eso es todo. Gracias por leerme.',
+      '💬 Espero lo entiendas.'
+    ];
+
+    const emojis = ['❤️', '🌸', '😳', '🥲', '🏒'];
+
+    let index = 0;
+
+    function mostrarMensaje() {
+      if (index >= frases.length) return;
+      const mensaje = document.createElement('div');
+      mensaje.className = 'mensaje';
+      mensaje.textContent = frases[index++];
+      mensaje.style.left = Math.random() * 60 + 20 + 'vw';
+      mensaje.style.top = Math.random() * 60 + 20 + 'vh';
+      document.body.appendChild(mensaje);
+      setTimeout(() => mensaje.remove(), 4000);
+    }
+
+    function soltarEmoji() {
+      const emoji = document.createElement('div');
+      emoji.className = 'emoji';
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * 100 + 'vw';
+      emoji.style.top = '-5vh';
+      emoji.style.fontSize = (Math.random() * 2 + 1.5) + 'rem';
+      document.body.appendChild(emoji);
+      setTimeout(() => emoji.remove(), 5000);
+    }
+
+    setInterval(soltarEmoji, 300);
+  </script>
+</body>
+</html>
